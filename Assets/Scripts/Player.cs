@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, ICanTakeDamage
 {
     [SerializeField] private InputManager inputManager;
     [SerializeField] private Camera mainCamera;
@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float maxSpeed;
     [SerializeField] private float stopSpeed;
     [SerializeField] private float dragSpeed;
-
+    public int Health { get; set; } = 100;
     private Rigidbody2D rb;
     private Vector3 mousePosition;
     private bool canShoot;
@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         canShoot = true;
         InitiateInputs();
     }
-    
+
     void Update()
     {
         // Drag
@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         // Max Velocity Clamp
         rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxSpeed);
     }
+
     private void Move(Vector2 direction)
     {
         Vector2 moveDirection = new Vector2(direction.x, direction.y).normalized;
@@ -74,4 +75,15 @@ public class PlayerMovement : MonoBehaviour
         inputManager.OnSpacePressed.AddListener(Stop);
         inputManager.OnMousePressed.AddListener(Shoot);
     }
+
+    public void GetDamage(int damage)
+    {
+        Health -= damage;
+        if (Health <= 0)
+        {
+            Debug.Log(gameObject.name + " died.");
+            Destroy(gameObject);
+        }
+    }
 }
+
