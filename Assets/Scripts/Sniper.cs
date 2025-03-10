@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class Sniper : MonoBehaviour, ICanTakeDamage
 {
-    [SerializeField] private Transform playerLocation;
-    public int Health { get; set; } = 50;
-    [SerializeField] private float speed;
-    [SerializeField] private float damage;
-    [SerializeField] private float range;
+   
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform bulletSpawn;
+    [SerializeField] private Transform playerLocation;
+    [SerializeField] private float speed;
+    [SerializeField] private float range;
+
+    public int Health { get; set; } = 50;
     private Rigidbody2D rb;
     private bool canShoot;
 
