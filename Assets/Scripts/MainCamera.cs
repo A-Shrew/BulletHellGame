@@ -4,21 +4,18 @@ using UnityEngine;
 
 public class MainCamera : MonoBehaviour
 {
-    public Transform targetLocation;
+    [SerializeField] private Transform player;
     [SerializeField] private float speed;
-    [SerializeField] private float maxSpeed;
-
-    private Vector3 velocity;
+    [SerializeField] private float offset;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        transform.position = targetLocation.position;
+        transform.position = new Vector3(player.position.x,player.position.y,player.position.z-offset);
     }
-
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, targetLocation.position, ref velocity, speed * Time.deltaTime, maxSpeed);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, player.position.z - offset), speed * Time.deltaTime);
     }
 }

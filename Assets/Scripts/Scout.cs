@@ -1,3 +1,4 @@
+using Assets.Scripts;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,15 +23,25 @@ public class Enemy : MonoBehaviour, ICanTakeDamage
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
+        if (canMove && playerLocation!=null)
         {
             transform.position = Vector2.MoveTowards(transform.position, playerLocation.position, speed * Time.deltaTime);
+            Look();
         }
         else
         {
             rb.linearVelocity = Vector3.zero;
         }
     }
+
+    private void Look()
+    {
+        Vector3 direction = playerLocation.position - transform.position;
+        direction.Normalize();
+        float rot_z = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, rot_z);
+    }
+
 
     public void GetDamage(int damage)
     {
@@ -60,10 +71,4 @@ public class Enemy : MonoBehaviour, ICanTakeDamage
         yield return new WaitForSeconds(hitCooldown);
         canMove = true;
     }
-}
-
-public interface ICanTakeDamage
-{
-    public int Health { get; set; }
-    public void GetDamage(int damage);
 }

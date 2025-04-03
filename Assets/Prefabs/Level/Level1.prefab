@@ -128,8 +128,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maincam: {fileID: 0}
-  leftCamLocation: {fileID: 3197619917455982157}
-  rightCamLocation: {fileID: 5507881481220417941}
+  camLocation1: {fileID: 5507881481220417941}
+  camLocation2: {fileID: 3197619917455982157}
+  isSideDoor: 1
 --- !u!1 &1185388696173320188
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +141,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6234115135921932207}
   - component: {fileID: 4557457086095860862}
-  - component: {fileID: 8991991552790634800}
+  - component: {fileID: 7167241898921359949}
   m_Layer: 0
   m_Name: Door34
   m_TagString: Untagged
@@ -209,7 +210,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 3, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8991991552790634800
+--- !u!114 &7167241898921359949
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,12 +219,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1185388696173320188}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6477aaf106787d04ebf4949a1d494e8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 82241ab222be7d44380f593d1e7eefa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maincam: {fileID: 0}
-  topCamLocation: {fileID: 3197619917455982157}
-  bottomCamLocation: {fileID: 4664132361300852298}
+  camLocation1: {fileID: 4664132361300852298}
+  camLocation2: {fileID: 3197619917455982157}
+  isSideDoor: 0
 --- !u!1 &1247573942796054987
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,8 +318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maincam: {fileID: 0}
-  leftCamLocation: {fileID: 3978156941618823240}
-  rightCamLocation: {fileID: 6686369463898464518}
+  camLocation1: {fileID: 3978156941618823240}
+  camLocation2: {fileID: 6686369463898464518}
+  isSideDoor: 1
 --- !u!1 &3500269978955351291
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,8 +569,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maincam: {fileID: 0}
-  leftCamLocation: {fileID: 6686369463898464518}
-  rightCamLocation: {fileID: 4664132361300852298}
+  camLocation1: {fileID: 6686369463898464518}
+  camLocation2: {fileID: 4664132361300852298}
+  isSideDoor: 1
 --- !u!1001 &671199109317631201
 PrefabInstance:
   m_ObjectHideFlags: 0
